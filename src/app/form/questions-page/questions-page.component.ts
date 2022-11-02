@@ -42,6 +42,8 @@ export class QuestionsPageComponent implements OnInit {
         filter(question => !!question)
       )
       .subscribe((question: Question) => {
+        const q = question
+        console.log('q', q);
        this.formService.addQuestion(question);
       });
   }
