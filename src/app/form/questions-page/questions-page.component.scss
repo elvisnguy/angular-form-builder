@@ -1,0 +1,15 @@
+.add-button-fab {
+  position: fixed;
+  top: 35px;
+  left: 213px;
+  z-index: 999;
+}
+
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}

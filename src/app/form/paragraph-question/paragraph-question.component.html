@@ -1,0 +1,13 @@
+<form [formGroup]="form">
+  <h3>{{question.question}} <span class="required" *ngIf="question.isRequired">*</span></h3>
+
+  <div>
+    <mat-form-field>
+      <textarea matInput formControlName="answer" cdkTextareaAutosize cdkAutosizeMinRows="1"></textarea>
+    </mat-form-field>
+  </div>
+
+  <mat-error class="mt-3" *ngIf="form.invalid && (form.dirty || isSubmited)">
+    This question is required
+  </mat-error>
+</form>

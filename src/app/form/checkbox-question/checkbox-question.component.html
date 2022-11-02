@@ -1,0 +1,25 @@
+<form [formGroup]="form">
+  <div formArrayName="options" *ngIf="question.options">
+    <h3>{{question.question}} <span class="required" *ngIf="question.isRequired">*</span></h3>
+    <div *ngFor="let option of optionsArrayControl.controls; let idx = index" class="anwser-option mt-2">
+      <div [formGroupName]="idx">
+        <mat-checkbox formControlName="selected">
+          {{question.options[idx]}}
+        </mat-checkbox>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="question.allowOther" class="mt-2">
+    <mat-checkbox #otherOption>
+      <span *ngIf="!otherOption.checked">Other</span>
+    </mat-checkbox>
+
+    <mat-form-field *ngIf="otherOption.checked">
+      <input matInput formControlName="otherOption" placeholder="Other Option" />
+    </mat-form-field>
+  </div>
+
+  <mat-error class="mt-4" *ngIf="!isValid && (form.dirty || isSubmited)">
+    This question is required
+  </mat-error>
+</form>

@@ -1,0 +1,20 @@
+mat-form-field {
+  width: 100%;
+}
+
+.mat-dialog-content {
+  overflow: unset;
+}
+
+.anwser-option {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-grow: 1;
+}
+
+.anwser-option-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

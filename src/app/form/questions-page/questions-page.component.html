@@ -1,0 +1,43 @@
+<mat-toolbar class="app-toolbar" color="primary">
+  <span>Question builder</span>
+</mat-toolbar>
+
+<button *ngIf="questions.length > 0" mat-fab color="accent" (click)="openFormBuilderDialog()" class="add-button-fab"
+  aria-label="Add new question">
+  <mat-icon>add</mat-icon>
+</button>
+
+<main class="main">
+
+  <div *ngIf="questions.length > 0; else emptyState">
+    <mat-card *ngFor="let question of questions; let i = index" class="mt-4">
+      <ng-container [ngSwitch]="question.type">
+        <ng-container *ngSwitchCase="questionTypeEnum.Paragraph">
+          <app-paragraph-question [question]="question" [isSubmited]="isSubmited"
+            (formChanges)="onFormChanged($event, i)">
+          </app-paragraph-question>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="questionTypeEnum.Checkbox">
+          <app-checkbox-question [question]="question" [isSubmited]="isSubmited"
+            (formChanges)="onFormChanged($event, i)">
+          </app-checkbox-question>
+        </ng-container>
+      </ng-container>
+    </mat-card>
+
+    <div class="mt-4 text-right">
+      <button (click)="goToReviewMyAnswers()" mat-flat-button color="primary" type="submit">Review my answers </button>
+    </div>
+
+  </div>
+
+  <ng-template #emptyState>
+    <div class="empty-state">
+      <h2>Your question list is empty!</h2>
+      <p>Start by adding a new question</p>
+      <button mat-raised-button color="accent" (click)="openFormBuilderDialog()">Add Question</button>
+    </div>
+  </ng-template>
+
+</main>

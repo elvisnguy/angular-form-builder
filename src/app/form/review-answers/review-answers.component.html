@@ -1,0 +1,26 @@
+<mat-toolbar class="app-toolbar" color="primary">
+  <span>Question builder</span>
+</mat-toolbar>
+
+
+<main class="main">
+
+  <div *ngFor="let item of formService.answers$ | async as answers">
+    <mat-card class="mt-3">
+      <h2>{{item.question}}</h2>
+      <p *ngIf="item.type === questionTypeEnum.Paragraph">{{item.answer}}</p>
+
+      <ul *ngIf="item.type === questionTypeEnum.Checkbox" class="options">
+        <li *ngFor="let option of item.options">
+          {{option}}
+        </li>
+      </ul>
+    </mat-card>
+
+  </div>
+
+
+  <div class="mt-4 text-right">
+    <a routerLink="../builder" mat-button>Back to Forms Builder</a>
+  </div>
+</main>
